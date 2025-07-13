@@ -1,0 +1,15 @@
+{
+  "name": "whatsapp-session-pairing",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "dependencies": {
+    "@hapi/boom": "^10.0.1",
+    "@whiskeysockets/baileys": "^6.7.18",
+    "express": "^4.19.2",
+    "socket.io": "^4.7.2"
+  }
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WhatsApp Session Pair</title>
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script defer src="script.js"></script>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    input, select, button { margin: 10px; padding: 10px; font-size: 16px; }
+    #qr-code, #code-display, #session-display { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>WhatsApp Session Pairing</h1>
+  <input type="text" id="phone" placeholder="Enter phone number (E.164)" />
+  <select id="mode">
+    <option value="qr">QR Code</option>
+    <option value="code">Pairing Code</option>
+  </select>
+  <button onclick="startPairing()">Start Pairing</button>
+
+  <div id="qr-code"></div>
+  <div id="code-display"></div>
+  <div id="session-display"></div>
+</body>
+</html>
