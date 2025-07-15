@@ -5,7 +5,7 @@ import { Server } from 'socket.io';
 import { Boom } from '@hapi/boom';
 import fs from 'fs';
 
-import baileys from '@whiskeysockets/baileys';
+import baileys from 'baileys';
 const makeWASocket = baileys.default?.makeWASocket || baileys.makeWASocket;
 const useMultiFileAuthState = baileys.useMultiFileAuthState;
 const DisconnectReason = baileys.DisconnectReason;
@@ -16,7 +16,7 @@ const io = new Server(httpServer, {
   cors: { origin: '*' }
 });
 
-const PORT = 5000;
+const PORT = 3000;
 app.use(express.static('frontend'));
 
 io.on('connection', async (socket) => {
