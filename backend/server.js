@@ -16,7 +16,7 @@ const io = new Server(httpServer, {
   cors: { origin: '*' }
 });
 
-const PORT = 3000;
+const PORT = 5000;
 app.use(express.static('frontend'));
 
 io.on('connection', async (socket) => {

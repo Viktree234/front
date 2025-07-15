@@ -1,31 +1,24 @@
-const socket = io();
+// Handles button selection and showing/hiding inputs
+const qrBtn = document.getElementById('qrModeBtn');
+const codeBtn = document.getElementById('codeModeBtn');
+const pairBtn = document.getElementById('pairBtn');
+const phoneContainer = document.getElementById('phoneContainer');
+const phoneInput = document.getElementById('phone');
 
-function startPairing() {
-  const phoneNumber = document.getElementById('phone').value.trim();
-  const mode = document.getElementById('mode').value;
-  if (!phoneNumber) return alert('Enter phone number');
+let selectedMode = null;
 
-  socket.emit('start-pair', { mode, phoneNumber });
+qrBtn.onclick = () => {
+  selectedMode = 'qr';
+  qrBtn.classList.add('active');
+  codeBtn.classList.remove('active');
+  phoneContainer.classList.add('hidden');
+  pairBtn.classList.remove('hidden');
+};
 
-  document.getElementById('qr-code').innerHTML = '';
-  document.getElementById('code-display').innerText = '';
-  document.getElementById('session-display').innerText = 'Waiting for connection...';
-}
-
-socket.on('qr', (qr) => {
-  const qrDiv = document.getElementById('qr-code');
-  qrDiv.innerHTML = '';
-  new QRCode(qrDiv, qr);
-});
-
-socket.on('code', (code) => {
-  document.getElementById('code-display').innerText = 'Pairing Code: ' + code;
-});
-
-socket.on('paired', ({ sessionID }) => {
-  document.getElementById('session-display').innerText = 'Session ID:\n' + sessionID;
-});
-
-socket.on('error', (err) => {
-  alert(err);
-});
+codeBtn.onclick = () => {
+  selectedMode = 'code';
+  codeBtn.classList.add('active');
+  qrBtn.classList.remove('active');
+  phoneContainer.classList.remove('hidden');
+  pairBtn.classList.remove('hidden');
+};

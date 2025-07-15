@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>WhatsApp Session Pair</title>
-  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-  <script defer src="script.js"></script>
-  <style>
-    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-    input, select, button { margin: 10px; padding: 10px; font-size: 16px; }
-    #qr-code, #code-display, #session-display { margin-top: 20px; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WhatsApp Session Pairing</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>WhatsApp Session Pairing</h1>
-  <input type="text" id="phone" placeholder="Enter phone number (E.164)" />
-  <select id="mode">
-    <option value="qr">QR Code</option>
-    <option value="code">Pairing Code</option>
-  </select>
-  <button onclick="startPairing()">Start Pairing</button>
+  <div class="container">
+    <h1>🤖 WhatsApp Session Pairing</h1>
 
-  <div id="qr-code"></div>
-  <div id="code-display"></div>
-  <div id="session-display"></div>
+    <div class="form">
+      <div class="mode-select">
+        <label>
+          <input type="radio" name="mode" value="qr" checked />
+          🔳 QR Code
+        </label>
+        <label>
+          <input type="radio" name="mode" value="code" />
+          🔢 Phone Number
+        </label>
+      </div>
+
+      <input type="tel" id="phone" placeholder="Phone number (e.g. 2348012345678)" />
+      <button id="pairBtn">Start Pairing</button>
+    </div>
+
+    <div id="output">
+      <div id="qrDisplay" class="hidden"></div>
+      <div id="codeDisplay" class="hidden"></div>
+      <div id="sessionDisplay"></div>
+      <div id="errorDisplay"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
